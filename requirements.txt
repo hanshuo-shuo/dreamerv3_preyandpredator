@@ -7,5 +7,5 @@ numpy
 optax
 rich
 ruamel.yaml
-tensorflow-cpu
+tensorflow
 tensorflow_probability
