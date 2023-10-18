@@ -223,7 +223,8 @@ class Environment(Env):
             if done or truncated:
                 self.episode_reward_history.append(self.current_episode_reward)
                 self.current_episode_reward = 0
-        return obs, reward, done, truncated, info
+            done = done or truncated
+        return obs, reward, done, info
 
     def reset(self):
         import matplotlib.pyplot as plt
