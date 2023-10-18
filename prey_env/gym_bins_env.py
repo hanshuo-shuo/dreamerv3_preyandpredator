@@ -185,7 +185,7 @@ class Environment(Env):
 
             if captured:
                 truncated = True
-                reward = -100
+                reward = -10
             info = {"is success": done, "is truncated": truncated}
             self.current_step += 1
             if self.current_step > self.max_step:
@@ -223,8 +223,7 @@ class Environment(Env):
             if done or truncated:
                 self.episode_reward_history.append(self.current_episode_reward)
                 self.current_episode_reward = 0
-            done = done or truncated
-        return obs, reward, done, info
+        return obs, reward, done, truncated, info
 
     def reset(self):
         import matplotlib.pyplot as plt
