@@ -1,4 +1,4 @@
-from gym_bins_env import Environment
+from prey_env import gym_Environment_D as Environment
 import time
 def main():
 
@@ -37,7 +37,7 @@ def main():
 
 
   from embodied.envs import from_gym
-  env = Environment(e=2, predator_speed=0.2,has_predator=True,max_step=300)
+  env = Environment(e=2, predator_speed=0.2, has_predator=True, max_step=300)
   env = from_gym.FromGym(env, obs_key='vector')  # Or obs_key='vector'.'image'
   env = dreamerv3.wrap_env(env, config)
   env = embodied.BatchEnv([env], parallel=False)
@@ -49,7 +49,7 @@ def main():
       **config.run, logdir=config.logdir,
       batch_steps=config.batch_size * config.batch_length)
   embodied.run.train(agent, env, replay, logger, args)
-  # embodied.run.eval_only(agent, env, logger, args)
+  #embodied.run.eval_only(agent, env, logger, args)
 
 
 if __name__ == '__main__':
